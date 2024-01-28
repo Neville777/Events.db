@@ -42,7 +42,8 @@ def create_tickets(num_tickets=10):
             quantity=fake.random_int(min=1, max=10),
             ticket_price=fake.pyfloat(left_digits=2, right_digits=2, positive=True, min_value=10, max_value=100),
             image_url=fake.image_url(),
-            tickets_available=fake.random_int(min=0, max=100)
+            tickets_available=fake.random_int(min=0, max=100),
+            tickets_purchased=fake.random_int(min=0, max=10) 
         )
         db.session.add(ticket)
     db.session.commit()

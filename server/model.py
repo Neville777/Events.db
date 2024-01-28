@@ -9,7 +9,7 @@ bcrypt = Bcrypt()
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'user'
-     
+    
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     role = db.Column(db.String(20), default='user', nullable=False)
@@ -84,6 +84,7 @@ class Ticket(db.Model, SerializerMixin):
     ticket_price = db.Column(db.Float, nullable=False)
     image_url = db.Column(db.String(255))
     tickets_available = db.Column(db.Integer, nullable=False, server_default='0')
+    tickets_purchased = db.Column(db.Integer, nullable=False, server_default='0')  
     bought_tickets = relationship('BoughtTicket', backref='ticket', lazy=True)
 
     @validates('quantity')
@@ -107,6 +108,7 @@ class Ticket(db.Model, SerializerMixin):
             'ticket_price': self.ticket_price,
             'image_url': self.image_url,
             'tickets_available': self.tickets_available,
+            'tickets_purchased': self.tickets_purchased,
             'bought_tickets': [bought_ticket.to_dict() for bought_ticket in self.bought_tickets]
         }
 

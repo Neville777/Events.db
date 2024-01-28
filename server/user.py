@@ -1,6 +1,6 @@
-from flask import request
+from flask import request, jsonify
 from flask_restful import Resource
-from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity, unset_jwt_cookies
 from model import db, User, bcrypt
 
 class UserRegistrationResource(Resource):
@@ -9,33 +9,32 @@ class UserRegistrationResource(Resource):
             data = request.get_json()
             username = data.get('username')
             password = data.get('password')
-            
+
             if not username or not password:
                 return {'error': 'Please provide username and password'}, 400
-            
+
             existing_user = User.query.filter_by(username=username).first()
             if existing_user:
                 return {'error': 'Username is already taken'}, 400
-            
+
             hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
             new_user = User(username=username, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
-            
+
             access_token = create_access_token(identity=username)
             refresh_token = create_refresh_token(identity=username)
-            
-            
-            return {'message': 'User registered succesfully.',
+
+            return {'message': 'User registered successfully.',
                     'access_token': access_token,
                     'refresh_token': refresh_token
-            },201
-            
+                    }, 201
+
         except Exception as e:
-            return {'error': str(e)},500
+            return {'error': str(e)}, 500
 
 class UserLoginResource(Resource):
-   def post(self):
+    def post(self):
         try:
             data = request.get_json()
             username = data.get('username')
@@ -50,12 +49,14 @@ class UserLoginResource(Resource):
                 return {"error": "Invalid username or password."}, 401
         except Exception as e:
             return {"error": str(e)}, 500
+
 class RefreshTokenResource(Resource):
     @jwt_required(refresh=True)
     def post(self):
         current_user = get_jwt_identity()
         access_token = create_access_token(identity=current_user)
         return {"access_token": access_token}, 200
+
 class UserResource(Resource):
     @jwt_required()
     def get(self):
@@ -73,3 +74,14 @@ class UserResource(Resource):
                 return {"message": "User not found."}, 404
         except Exception as e:
             return {"error": str(e)}, 500
+
+class LogoutResource(Resource):
+    @jwt_required()
+    def post(self):
+        try:
+            # Logout by revoking the JWT cookies
+            resp = jsonify({'message': 'Logout successful.'})
+            unset_jwt_cookies(resp)
+            return resp, 200
+        except Exception as e:
+            return {'error': str(e)}, 500

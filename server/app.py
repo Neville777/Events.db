@@ -5,6 +5,10 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from model import db, bcrypt 
+from user import UserRegistrationResource, UserLoginResource, UserResource, RefreshTokenResource, LogoutResource
+from Events import EventResource, AdminEventResource
+from tickets import TicketResource, AdminTicketResource
+from reviews import ReviewResource
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///events.db'
@@ -26,7 +30,20 @@ CORS(app)
 
 migrate = Migrate(app, db)
 
-# Create tables if not exist
+with app.app_context():
+    db.create_all()
+
+api.add_resource(UserRegistrationResource, '/register')
+api.add_resource(UserLoginResource, '/login')
+api.add_resource(UserResource, '/user')
+api.add_resource(LogoutResource, '/logout')
+api.add_resource(RefreshTokenResource, '/refresh_token')
+api.add_resource(EventResource, '/events', '/events/<int:event_id>')
+api.add_resource(AdminEventResource, '/admin/events', '/admin/events/<int:event_id>')
+api.add_resource(TicketResource, '/tickets', '/tickets/<int:ticket_id>')
+api.add_resource(AdminTicketResource, '/admin/tickets', '/admin/tickets/<int:ticket_id>')
+api.add_resource(ReviewResource, '/reviews', '/reviews/<int:review_id>')
+
 with app.app_context():
     db.create_all()
     

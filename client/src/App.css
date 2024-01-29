@@ -1,0 +1,417 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: rgb(253, 250, 250);
+}
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(https://www.archives.go.ke/sites/default/files/2023-02/meet%20the%20people%20of%20kenya_1.jpg);
+  width: 100vw;
+  height: 90vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  font-family: Poppins;
+  border-radius: 2px;
+  flex-direction: column;
+}
+
+.Headers {
+  text-align: center;
+  background-color: rgb(221, 236, 11);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  font-family: Poppins;
+  margin-bottom: 1px;
+}
+.HomeRoute {
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+.AboutRoute {
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: rgb(14, 9, 9);
+}
+
+.about-content {
+  color: rgb(228, 210, 177);
+}
+
+.about-section-container {
+  margin-top: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-background-image-container {
+  left: 5px;
+  z-index: -5;
+}
+
+.about-section-text-container {
+  flex: 1;
+
+  flex-direction: column;
+}
+
+.primary-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #ecebeb;
+  line-height: 5rem;
+}
+
+.primary-text {
+  font-size: clamp(1rem, 1.9vw, 1.5rem);
+
+  color: #8adf01;
+  margin: 1 rem 0rem;
+}
+
+.primary-subheading {
+  margin-top: 0px;
+  font-weight: 700;
+  text-align: right;
+  color: #fe9e0d;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.EventsRoute {
+  margin-left: 10px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.TicketsRoute {
+  margin-left: 100px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.Create-EventRoute {
+  margin-left: 100px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+.ChatRoute {
+  margin-left: 100px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+.SignupRoute {
+  margin-left: 100px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+.LoginRoute {
+  margin-left: 100px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+.DashboardRoute {
+  margin-left: 100px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+.AdminRoute {
+  margin-left: 100px;
+  font-size: larger;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+}
+
+h2 {
+  color: black;
+}
+
+.home-content {
+  text-align: center;
+}
+.home-events-header {
+  color: rgb(238, 235, 230);
+}
+
+.home-title {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  font-family: "AncientItalicHandwriting", serif;
+  color: #ee8003;
+}
+
+.home-description {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  font-family: "AncientItalicHandwriting", serif;
+  color: #35302c;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.EventCard {
+  background-color: rgb(208, 255, 0);
+  color: rgb(10, 8, 8);
+  border-radius: 10px;
+  margin: 10px;
+  max-width: 400px;
+  float: left;
+  width: 500px;
+  padding: 5px;
+  text-align: center;
+}
+
+.EventCard h2 {
+  color: rgb(201, 19, 19);
+}
+
+.EventCard h3 {
+  font-size: larger;
+  font-family: Poppins;
+}
+
+.EventCard .description {
+  font-family: Poppins;
+}
+
+.EventCard .image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.EventCard .BtnBuy {
+  background-color: #72a136;
+  color: rgb(146, 122, 122);
+  padding: 10px 20px;
+  font-size: large;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.FormBigBox {
+  width: 600px;
+  margin: 0px auto;
+  color: rgb(69, 85, 96);
+  font-family: Poppins;
+  padding-top: 81px;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.FormBox {
+  box-sizing: border-box;
+  border: 1px solid rgb(241, 245, 246);
+  background-color: rgb(255, 255, 255);
+  box-shadow: aqua;
+  padding: 31px;
+  margin-bottom: 133px;
+}
+
+.FormHeader {
+  background-color: #72a136;
+  color: white;
+  padding: 10px 20px;
+  font-size: larger;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.Form {
+  background-color: rgba(255, 255, 255, 0.842);
+  display: block;
+  margin-top: 0em;
+}
+
+.ClientName {
+  display: flex;
+  min-width: 0px;
+  width: 100%;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="time"],
+input[type="number"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 100px;
+}
+
+.CreateEventBtn {
+  background-color: #72a136;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: large;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.CreateEventBtn:hover {
+  background-color: aqua;
+}
+
+.FilterPage {
+  padding: 10px 20px;
+  font-size: large;
+  border-radius: 20px;
+  margin: 10px;
+  font-family: Georgia;
+}
+
+.TicketImage {
+  width: 400px;
+  height: 300px;
+}
+
+.TicketCard {
+  border-radius: 20px;
+  background-color: antiquewhite;
+  width: 200px;
+  height: 200px;
+  display: inline-table;
+  margin-left: 20px;
+}
+
+input {
+  padding: 8px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.message-container {
+  margin-top: 30px;
+  padding-top: 10px;
+}
+
+.message {
+  margin-bottom: 20px;
+  padding: 18px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+}
+.EventImage {
+  width: 100%;
+  height: 300px;
+}
+.deleteTitle {
+  color: brown;
+}
+.EventAction {
+  background-color: orange;
+  color: white;
+  border-radius: 20px;
+  margin: 10px;
+  max-width: 400px;
+  width: 500px;
+  padding: 15px;
+  text-align: center;
+  display: inline-block;
+}
+.GoBackBtn {
+  margin-left: 20px;
+}
+.Footer {
+  font-weight: bolder;
+  font-size: x-large;
+  font-family: Georgia;
+  color: white;
+}
+.Event_img {
+  width: 400px;
+  height: 300px;
+}
+.CloseButton {
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.EventModal {
+  text-align: center;
+}
+.Tickets {
+  text-align: center;
+}
+
+.primary-subheading {
+  margin-top: -370px;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(62, 194, 36);
+  font-size: xx-large;
+  font-style: italic;
+}
+
+.primary-heading {
+  text-align: center;
+  font-size: large;
+}
+
+.primary-text {
+  text-align: center;
+  font-family: "AncientItalicHandwriting", serif;
+}
+
+.primary-text p {
+  color: #0b0a0a;
+}

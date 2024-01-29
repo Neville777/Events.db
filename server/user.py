@@ -11,7 +11,7 @@ class UserRegistrationResource(Resource):
             password = data.get('password')
 
             if not username or not password:
-                return {'error': 'Please provide username and password'}, 400
+                return {'error': 'Please provide both username and password'}, 400
 
             existing_user = User.query.filter_by(username=username).first()
             if existing_user:
@@ -22,13 +22,7 @@ class UserRegistrationResource(Resource):
             db.session.add(new_user)
             db.session.commit()
 
-            access_token = create_access_token(identity=username)
-            refresh_token = create_refresh_token(identity=username)
-
-            return {'message': 'User registered successfully.',
-                    'access_token': access_token,
-                    'refresh_token': refresh_token
-                    }, 201
+            return {'message': 'User registered successfully.'}, 201
 
         except Exception as e:
             return {'error': str(e)}, 500
@@ -40,13 +34,17 @@ class UserLoginResource(Resource):
             username = data.get('username')
             password = data.get('password')
 
+            if not username or not password:
+                return {'error': 'Please provide both username and password'}, 400
+
             user = User.query.filter_by(username=username).first()
             if user and bcrypt.check_password_hash(user.password, password):
                 access_token = create_access_token(identity=username)
                 refresh_token = create_refresh_token(identity=username)
                 return {"access_token": access_token, "refresh_token": refresh_token}, 200
             else:
-                return {"error": "Invalid username or password."}, 401
+                return {"error": "Invalid username or password"}, 401
+
         except Exception as e:
             return {"error": str(e)}, 500
 
@@ -71,7 +69,8 @@ class UserResource(Resource):
                     "role": user.role,
                 }, 200
             else:
-                return {"message": "User not found."}, 404
+                return {"message": "User not found"}, 404
+
         except Exception as e:
             return {"error": str(e)}, 500
 
@@ -80,8 +79,9 @@ class LogoutResource(Resource):
     def post(self):
         try:
             # Logout by revoking the JWT cookies
-            resp = jsonify({'message': 'Logout successful.'})
+            resp = jsonify({'message': 'Logout successful'})
             unset_jwt_cookies(resp)
             return resp, 200
+
         except Exception as e:
             return {'error': str(e)}, 500
